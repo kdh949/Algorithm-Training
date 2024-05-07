@@ -1,30 +1,30 @@
 #include <stdio.h>
-#include <stdlib.h>
+
+/* 방 번호 반환하는 함수 */
+int room(int height, int request) {
+    int unit = 1; //호수, 1호부터 시작
+
+    while(request > height) {
+        request-=height;
+        unit++;
+    }
+
+    return (request * 100 + unit);
+}
 
 int main() {
     int num;
+    scanf("%d", &num);
+    int result;
     int a, b, c;
 
-    scanf("%d", &num);
-    int tmp;
-    int count = 1;
-    int result=0;
-
     for (int i=0; i<num; i++) {
-        result=0;
-        count=1;
         scanf("%d %d %d", &a, &b, &c);
-        tmp = c;
-        while(tmp > a) {
-            tmp-=a;
-            count++;
-        }
 
-        result = tmp*100;
-        result += count;
+        result = room(a, c);
 
         printf("%d\n", result);
     }
-    
+
     return 0;
 }
